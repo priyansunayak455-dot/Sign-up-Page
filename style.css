@@ -1,17 +1,20 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    font-style: Arial, sans-serif;
+    /* Fixed typo: font-style handles italics, font-family handles the font type */
+    font-family: Arial, sans-serif; 
     box-sizing: border-box;
+}
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* changed height to min-height for safety on small screens */
+    background-color: #f4f4f4; /* Optional: adds a light gray background behind the box */
 }
-.container{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 100vh;
-}
-.form{
+
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,41 +22,60 @@
     border: #ddd solid 1px;
     border-radius: 10px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    height: 50%;
-    width: 25%;
-    gap: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Softened the shadow slightly */
     
+    /* --- RESPONSIVE CHANGES HERE --- */
+    width: 90%;          /* Occupies 90% of screen on mobile */
+    max-width: 400px;    /* Stops growing at 400px on desktop (approx 25% of large screen) */
+    height: auto;        /* Allows box to grow if you add more fields */
+    padding: 40px 0;     /* Adds internal breathing room since we removed fixed height */
+    gap: 25px;
 }
-.em ,.ps{
+
+.em, .ps {
     display: flex;
     flex-direction: column;
     width: 80%;
     gap: 8px;
     font-size: 16px;
-   
-    
 }
-button{
-    background-color:#007bff;
+
+button {
+    background-color: #007bff;
     color: white;
     width: 80%;
     border-radius: 5px;
-    height: 33px;
+    height: 40px;       /* Increased slightly for better touch target on mobile */
     border: none;
+    cursor: pointer;    /* Adds a hand icon when hovering */
+    font-size: 16px;
 }
-a{
+
+a {
     text-decoration: none;
     color: #007bff;
 }
-input{
-    height: 33px;
+
+input {
+    height: 35px;
     font-size: 16px;
-    
+    padding-left: 10px; /* Adds space so text doesn't touch the border */
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-h4{
+
+h4 {
     font-weight: 300;
 }
-button:hover{
-    scale: 1.02;
+
+button:hover {
+    transform: scale(1.02); /* scale property is usually used with transform */
+}
+
+/* --- OPTIONAL: EXTRA SAFETY FOR MOBILE --- */
+@media screen and (max-width: 480px) {
+    .form {
+        width: 95%; /* Make it slightly wider on very small phones */
+        padding: 30px 0;
+    }
 }
